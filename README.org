@@ -1,0 +1,8 @@
+* Brainfuck Interpreter
+
+A brainfuck interpreter written in c.
+
+** Usage
+#+begin_src sh
+  ./bf file
+#+end_src
