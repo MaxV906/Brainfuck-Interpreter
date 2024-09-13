@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
+#include <unistd.h>
 
 void interpreter(char *content) {
 
@@ -28,9 +29,13 @@ void interpreter(char *content) {
     else if (content[i] == '-') blocks[current_block]--;
     else if (content[i] == '.') printf("%c", blocks[current_block]);
     else {
-      fprintf(stderr, "Syntax Error: Unknown operator %d:%c\n", i, content[i]);
-      break;
+      if (content[i] != '\n' && content[i] != ' ') {
+	fprintf(stderr, "Syntax Error: Unknown operator %d: '%c'\n", i, content[i]);
+	break;
+      }
     }
+
+    sleep(0.5);
 
   }
 
